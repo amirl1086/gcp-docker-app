@@ -1,0 +1,23 @@
+sudo: required
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - docker build -t amirl1086/complex-client-tests -f ./client/Dockerfile.dev ./client
+  # - docker build -t amirl1086/complex-server-tests -f ./client/Dockerfile.dev ./server
+
+script:
+  - docker run -e CI=true amirl1086/complex-client-tests npm run test
+
+after_success:
+  - docker build -t amirl1086/complex-client ./client
+  - docker build -t amirl1086/complex-nginx ./nginx
+  - docker build -t amirl1086/complex-server ./server
+  - docker build -t amirl1086/complex-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push amirl1086/complex-client
+  - docker push amirl1086/complex-nginx
+  - docker push amirl1086/complex-server
+  - docker push amirl1086/complex-worker
