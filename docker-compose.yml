@@ -1,11 +1,11 @@
-version: "3"
+version: '3'
 services:
   client:
-    image: "amirl1086/complex-client"
+    image: 'amirl1086/complex-client'
     mem_limit: 128m
     hostname: client
   server:
-    image: "amirl1086/complex-server"
+    image: 'amirl1086/complex-server'
     mem_limit: 128m
     hostname: api
     environment:
@@ -17,15 +17,15 @@ services:
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
   worker:
-    image: "amirl1086/complex-worker"
+    image: 'amirl1086/complex-worker'
     mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    image: "amirl1086/complex-nginx"
+    image: 'amirl1086/complex-nginx'
     mem_limit: 128m
     hostname: nginx
     ports:
-      - "80:80"
+      - '80:80'
