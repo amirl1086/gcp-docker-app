@@ -14,6 +14,6 @@ docker push amirl1086/complex-worker:$GIT_SHA
 
 # possible to replace the images in the config files before
 kubectl apply -f ./orchestration
-kubectl set image deploymet/client-deploymet client=amirl1086/complex-client:$GIT_SHA
-kubectl set image deploymet/server-deploymet server=amirl1086/complex-server:$GIT_SHA
-kubectl set image deploymet/worker-deploymet worker=amirl1086/complex-worker:$GIT_SHA
+kubectl set image deployment/client-deployment client=amirl1086/complex-client:$GIT_SHA
+kubectl set image deployment/server-deployment server=amirl1086/complex-server:$GIT_SHA
+kubectl set image deployment/worker-deployment worker=amirl1086/complex-worker:$GIT_SHA
