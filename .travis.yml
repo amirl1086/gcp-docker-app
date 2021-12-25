@@ -23,7 +23,7 @@ before_install:
   - gcloud container clusters get-credentials complex-app-cluster
 
   # run tests
-  - echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} -password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker build -t ${DOCKER_USERNAME}/complex-client-tests -f ./client/Dockerfile.dev ./client
   - docker run -e CI=true ${DOCKER_USERNAME}/complex-client-tests npm run test
 
