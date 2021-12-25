@@ -24,8 +24,8 @@ before_install:
 
   # run tests
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker build -t amirl1086/complex-client-tests -f ./client/Dockerfile.dev ./client
-  - docker run -e CI=true amirl1086/complex-client-tests npm run test
+  # - docker build -t amirl1086/complex-client-tests -f ./client/Dockerfile.dev ./client
+  # - docker run -e CI=true amirl1086/complex-client-tests npm run test
 
 deploy:
   provider: script
