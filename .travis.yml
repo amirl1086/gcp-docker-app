@@ -29,6 +29,6 @@ before_install:
 
 deploy:
   provider: script
-  script: /bin/bash ./deploy
+  script: bash ./deploy
   on:
     branch: master
