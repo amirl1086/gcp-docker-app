@@ -14,6 +14,7 @@ function fib(index) {
 }
 
 sub.on('message', (channel, message) => {
+  // will be calculated only if not exists
   redisClient.hset('values', message, fib(parseInt(message)));
 });
 sub.subscribe('insert');
